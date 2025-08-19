@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tg_game")
+@Table(name = "tb_game")
 public class Game {
 
     @Id
@@ -19,7 +19,12 @@ public class Game {
     private String platforms;
     private Double score;
     private String imgUrl;
+
+    //instrução para JPA criar o campo no banco como Texto e não com o padrão VARCHAR(255)
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     //construtor sem argumentos
@@ -28,7 +33,7 @@ public class Game {
 
     //construtor com argumentos
     public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl, String shortDescription, String longDescription) {
-        //this.valor do objeto(ex id) recebe valor do argumento
+        //this.valorDoObjeto(ex id) recebe valor do argumento
         this.id = id;
         this.title = title;
         this.year = year;
